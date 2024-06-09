@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use \App\Models\Activite ;
+use \App\Models\Club ;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,7 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call([
+            ActiviteSeeder::class,
+        ]);
+
         // \App\Models\User::factory(10)->create();
+         Activite::factory(10)->create();
+         Club::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

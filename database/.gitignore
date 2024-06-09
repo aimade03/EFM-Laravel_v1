@@ -1,1 +1,7 @@
 *.sqlite*
+$club = $reques[]
+if($eleve->club->id != $club->id){
+    $eleve->club()->associate($club)
+
+}
+$club->eleves()->save($eleve)

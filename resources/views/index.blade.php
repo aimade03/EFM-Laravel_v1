@@ -2,6 +2,10 @@
 @section('content')
     <h1>Liste Materials</h1>
     <a href="/materials/create" class="btn btn-dark">Ajouter une nouveau Materials</a>
+    @auth
+    <a href="/logout">Logout</a>
+    <h1>{{ Auth::user()->name }}</h1>
+    @endauth
     <table>
         <tr>
             <th>code</th>

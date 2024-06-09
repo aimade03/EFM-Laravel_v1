@@ -12,6 +12,9 @@ class EmployeController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function AfficherListEmployes()
     {
         $employes = Employe::all();
@@ -46,10 +49,7 @@ class EmployeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Employe $employe)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -66,13 +66,11 @@ class EmployeController extends Controller
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Employe $employe,Materiel $matriel)
+    public function destroy(Employe $employe,Materiel $materiel)
     {
-        $employe->materiels()->detach($matriel->id);
-        return redirect('/employes/'.$employe->id);
+    $employe = Employe::find($employe->id);
+    $employe->materiels()->detach($materiel->id);
+    return redirect('/employes/' . $employe->id);
     }
+
 }
